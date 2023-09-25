@@ -1,0 +1,49 @@
+{
+    "name": "spacecatninja/imager-x-imgix-download-transformer",
+    "description": "Imgix download transformer for Imager X",
+    "type": "craft-plugin",
+    "version": "1.0.0",
+    "license": "MIT",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "image",
+        "responsive",
+        "transform",
+        "srcset",
+        "picture",
+        "imgix"
+    ],
+    "support": {
+        "docs": "https://github.com/spacecatninja/craft-imager-x-imgix-download-transformer/blob/master/README.md",
+        "issues": "https://github.com/spacecatninja/craft-imager-x-imgix-download-transformer/issues"
+    },
+    "authors": [
+        {
+            "name": "SPACECATNINJA",
+            "homepage": "https://www.spacecat.ninja"
+        }
+    ],
+    "require": {
+        "php": "^8.0",        
+        "craftcms/cms": "^4.0.0",
+        "spacecatninja/imager-x": "^4.2.3"
+    },
+    "autoload": {
+        "psr-4": {
+          "spacecatninja\\imgixdownloadtransformer\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "Imager X Imgix Download Transformer",
+        "handle": "imager-x-imgix-download-transformer",
+        "schemaVersion": "1.0.0",
+        "hasCpSettings": false,
+        "hasCpSection": false,
+        "changelogUrl": "https://raw.githubusercontent.com/spacecatninja/craft-imager-x-imgix-download-transformer/master/CHANGELOG.md",
+        "components": {},
+        "class": "spacecatninja\\imgixdownloadtransformer\\ImgixDownloadTransformer"
+    }
+}
