@@ -38,8 +38,9 @@ class ImgixDownload extends Component implements TransformerInterface
      */
     public function transform(Asset|string $image, array $transforms): ?array
     {
+        $originalTransforms = $transforms;
         $transforms = $this->ensureAutoFormatNotSet($transforms);
-
+        
         $imgixTransformer = new ImgixTransformer();
         $imgixTransformedImages = $imgixTransformer->transform($image, $transforms);
 
@@ -47,7 +48,13 @@ class ImgixDownload extends Component implements TransformerInterface
         $i = 0;
 
         foreach ($imgixTransformedImages as $imgixTransformedImage) {
-            $transformedImages[] = $this->processTransformedImage($image, $imgixTransformedImage, $transforms[$i]);
+            /* 
+                Note to self: We use the original, normalized transforms from ImagerService
+                when proceeding to store the images. This is to make the resulting filenames
+                compatible with the native craft transformer, making it possible to rip out
+                Imgix and keep the transforms   
+            */ 
+            $transformedImages[] = $this->processTransformedImage($image, $imgixTransformedImage, $originalTransforms[$i]);
             $i++;
         }
         
