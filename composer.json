@@ -2,7 +2,7 @@
     "name": "spacecatninja/imager-x-imgix-download-transformer",
     "description": "Imgix download transformer for Imager X",
     "type": "craft-plugin",
-    "version": "1.0.1",
+    "version": "2.0.0",
     "license": "MIT",
     "keywords": [
         "craft",
@@ -27,9 +27,9 @@
         }
     ],
     "require": {
-        "php": "^8.0",        
-        "craftcms/cms": "^4.0.0",
-        "spacecatninja/imager-x": "^4.2.3"
+        "php": "^8.2",        
+        "craftcms/cms": "^5.0.0",
+        "spacecatninja/imager-x": "^5.0.0-beta.1"
     },
     "autoload": {
         "psr-4": {

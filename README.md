@@ -4,7 +4,7 @@ A transformer for Imager X that uses [Imgix](https://imgix.com/) for transforms,
 
 ## Requirements
 
-This plugin requires Craft CMS 4.0.0 or later, [Imager X 4.0.0](https://github.com/spacecatninja/craft-imager-x/) or later,
+This plugin requires Craft CMS 5.0.0 or later, [Imager X 5.0.0](https://github.com/spacecatninja/craft-imager-x/) or later,
 and an [Imgix account](https://imgix.com/).
  
 ## Usage
