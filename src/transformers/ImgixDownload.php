@@ -15,12 +15,13 @@ use craft\elements\Asset;
 use craft\helpers\FileHelper;
 use spacecatninja\imagerx\helpers\ImagerHelpers;
 use spacecatninja\imagerx\ImagerX;
-use spacecatninja\imagerx\models\ImgixSettings;
-use spacecatninja\imagerx\models\ImgixTransformedImageModel;
+use spacecatninja\imgixtransformer\ImgixTransformer;
+use spacecatninja\imgixtransformer\models\ImgixSettings;
+use spacecatninja\imgixtransformer\models\ImgixTransformedImageModel;
 use spacecatninja\imagerx\models\LocalSourceImageModel;
 use spacecatninja\imagerx\models\LocalTargetImageModel;
 use spacecatninja\imagerx\models\LocalTransformedImageModel;
-use spacecatninja\imagerx\transformers\ImgixTransformer;
+use spacecatninja\imgixtransformer\transformers\Imgix;
 use spacecatninja\imagerx\services\ImagerService;
 use spacecatninja\imagerx\transformers\TransformerInterface;
 use spacecatninja\imagerx\exceptions\ImagerException;
@@ -41,7 +42,7 @@ class ImgixDownload extends Component implements TransformerInterface
         $originalTransforms = $transforms;
         $transforms = $this->ensureAutoFormatNotSet($transforms);
         
-        $imgixTransformer = new ImgixTransformer();
+        $imgixTransformer = new Imgix();
         $imgixTransformedImages = $imgixTransformer->transform($image, $transforms);
 
         $transformedImages = [];
@@ -72,11 +73,15 @@ class ImgixDownload extends Component implements TransformerInterface
     private function ensureAutoFormatNotSet(array $transforms): array
     {
         $config = ImagerService::getConfig();
+        
+        /** @var \spacecatninja\imgixtransformer\models\Settings $pluginSettings */
+        $pluginSettings = ImgixTransformer::$plugin->getSettings();
+        
         $r = [];
 
         foreach ($transforms as $transform) {
-            $profile = $config->getSetting('imgixProfile', $transform);
-            $imgixConfigArr = $config->getSetting('imgixConfig', $transform);
+            $profile = $config->transformerConfig['profile'] ?? $transform['imgixProfile'] ?? $pluginSettings->defaultProfile;
+            $imgixConfigArr = $pluginSettings->profiles;
 
             if (!isset($imgixConfigArr[$profile])) {
                 $msg = 'Imgix profile “'.$profile.'” does not exist.';
