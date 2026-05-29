@@ -4,8 +4,8 @@ A transformer for Imager X that uses [Imgix](https://imgix.com/) for transforms,
 
 ## Requirements
 
-This plugin requires Craft CMS 5.0.0 or later, [Imager X 5.0.0](https://github.com/spacecatninja/craft-imager-x/) or later,
-and an [Imgix account](https://imgix.com/).
+This plugin requires Craft CMS 5.0.0 or later, [Imager X 6.0.0](https://github.com/spacecatninja/craft-imager-x/) or later, 
+the [Imgix transformer 1.0.0](https://github.com/spacecatninja/craft-imager-x-imgix-transformer) or later, and an [Imgix account](https://imgix.com/).
  
 ## Usage
 
@@ -16,8 +16,9 @@ image, but downloads and stores the image locally on the server.
 Why not just use `imgix`? Saves you some $$$.  
 Why not just use `craft`? Saves you a lot of CPU cycles and memory, and you're not limited by your server configuration.
 
-All configuration is done through [Imager's standard configuration](https://imager-x.spacecat.ninja/configuration.html), 
-just like you would when using the `craft` and `imgix` transformers. This transformer will use the configuration for each
+All configuration is done through [Imager's](https://imager-x.spacecat.ninja/configuration.html) and 
+the [Imgix transformer's](https://github.com/spacecatninja/craft-imager-x-imgix-transformer#configuration) configuration, 
+just like you would when using the `craft` and `imgix` transformers. This transformer will use the configuration from each
 where appropriate, so if you run into problems test that your configuration works for those transformers.
 
 To activate the transformer, set the [`transformer` config setting](https://imager-x.spacecat.ninja/configuration.html#transformer-string)
@@ -31,6 +32,10 @@ to `imgixdownload`:
 
 The biggest cave-at by not letting Imgix serve the images through its CDN, is that `auto: format` doesn't work anymore. You'll 
 have to serve up different formats manually, preferably using `<picture>`, just like you would if you used local transforms.
+
+:::tip
+[The Power Pack](https://github.com/spacecatninja/craft-imager-x-power-pack) makes it super easy to serve different formats with `<picture>`.
+:::
 
 Even though transforms aren't done on the server, there will still be some latency while waiting for Imgix to deliver the image. So just
 like when using the `craft` transformer, you'll benefit from configuring 
@@ -52,7 +57,8 @@ To install the plugin, follow these instructions:
 ## Configuration
 
 There is currently nothing to configure in this plugin, all configuration is done 
-in [the Imager X configuration](https://imager-x.spacecat.ninja/configuration.html).
+in [Imager X's](https://imager-x.spacecat.ninja/configuration.html) and the 
+[Imgix transformer's](https://github.com/spacecatninja/craft-imager-x-imgix-transformer#configuration) configuration.
 
 
 Price, license and support
