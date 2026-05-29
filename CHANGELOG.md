@@ -1,6 +1,6 @@
 # Imgix download transformer for Imager X Changelog
 
-## 2.0.0 - 2023-04-06
+## 3.0.0 - 2026-05-28
 
 ### Added
-- Added Craft 5 support
+- Added support for Imager X 6.0 and the new Imgix transformer.
